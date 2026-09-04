@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クラス企画一覧 - 第45回 稲稜祭</title>
+    <meta name="description" content="第45回稲稜祭のクラス企画一覧です。1年・2年・3年ごとに出し物を紹介します。">
+    <meta name="keywords" content="稲稜祭, クラス企画, ブース, 1年, 2年, 3年">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body data-page="booth">
+    <div class="grid-bg"></div>
+
+    <!-- ローディング -->
+    <div id="loading">
+        <span class="loading-ball">⚽</span>
+        <div class="loading-text">Now loading</div>
+        <div class="loading-percent" aria-live="polite">0%</div>
+        <div class="loading-bar-wrap">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-final">We have no limit...</div>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">稲稜祭 <span>'26</span></a>
+        </div>
+        <button class="hamburger" id="js-hamburger" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav" id="js-nav">
+            <ul>
+                <li><a href="index.html">TOP</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="event.html">EVENTS</a></li>
+                <li><a href="booth.html" class="is-current">BOOTHS</a></li>
+                <li><a href="access.html">ACCESS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ヒーロー -->
+        <section class="top booth-top">
+            <div class="top-content">
+                <div class="top-theme"><span>CLASS BOOTHS</span></div>
+                <h1 class="heading-hero js-split-text text-shadow-solid">CLASS BOOTHS</h1>
+                <p class="fs-desc js-split-text" style="margin: 0 auto;">1年から3年までのクラスが作る出し物をご紹介します。カードをタップして詳細を確認してください。</p>
+            </div>
+        </section>
+
+        <!-- スティッキー学年インジケーター -->
+        <div class="floor-sticky-indicator" aria-live="polite">
+            <div class="floor-sticky-copy">
+                <p class="floor-sticky-label" id="js-floor-label">1年生の出し物</p>
+                <h3 id="js-floor-title">1年生クラスの展示</h3>
+            </div>
+            <nav class="floor-jump-links" aria-label="学年ジャンプ">
+                <a href="#year-1">1年</a>
+                <a href="#year-2">2年</a>
+                <a href="#year-3">3年</a>
+            </nav>
+        </div>
+
+        <!-- 1年生 -->
+        <section class="floor-section" id="year-1" data-floor-label="1年生の出し物" data-floor-title="1年生クラスの展示">
+            <div class="floor-section-header">
+                <div class="floor-badge">1年</div>
+                <div>
+                    <h2>1年生 / 出し物一覧</h2>
+                    <p>各クラスをタップして詳細を確認できます。</p>
+                </div>
+            </div>
+            <div class="booth-grid">
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/1a.png"
+                    data-classname="1-A"
+                    data-room="3F-"
+                    data-title="Sweet Halloween"
+                    data-desc="一歩入れば、そこはハロウィンの世界！デコレーションしたドーナツや、見た目も楽しいハロウィンドリンクをご用意しました。教室いっぱいに広がるフォトジェニックな空間で、おいしい・楽しい・映えるひとときをお届けします。ぜひ気軽にお立ち寄りください！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/1a.png" alt="1A組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">1-A</span>
+                            <span class="booth-room">3F-</span>
+                        </div>
+                        <h3>Sweet Halloween</h3>
+                        <p class="booth-description">一歩入れば、そこはハロウィンの世界！デコレーションしたドーナツや、見た目も楽しいハロウィンドリンクをご用意しました。教室いっぱいに広がるフォトジェニックな空間で、おいしい・楽しい・映えるひとときをお届けします。ぜひ気軽にお立ち寄りください！</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/1b.png"
+                    data-classname="1-B"
+                    data-room="3F-"
+                    data-title="B STORY MANIA"
+                    data-desc="ある朝起きると、身体が小さくなっていた！！？周りには喋るおもちゃ達が…。元の姿に戻る鍵は「的当てゲームのクリア」。様々な道具を使ってターゲットを狙い、この奇妙なおもちゃの世界から無事に脱出しよう！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/1b.png" alt="1B組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">1-B</span>
+                            <span class="booth-room">3F-102</span>
+                        </div>
+                        <h3>B STORY MANIA</h3>
+                        <p class="booth-description">ある朝起きると、身体が小さくなっていた！！？周りには喋るおもちゃ達が…。元の姿に戻る鍵は「的当てゲームのクリア」。様々な道具を使ってターゲットを狙い、この奇妙なおもちゃの世界から無事に脱出しよう！</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/1c.png"
+                    data-classname="1-C"
+                    data-room="3F-"
+                    data-title="^ ^"
+                    data-desc="早くだしてもろて"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/1c.png" alt="1C組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">1-C</span>
+                            <span class="booth-room">3F-</span>
+                        </div>
+                        <h3>わああ ^ ^</h3>
+                        <p class="booth-description">早くだしてもろて</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/1d.png"
+                    data-classname="1-D"
+                    data-room="3F-"
+                    data-title="GKC"
+                    data-desc="テレビでお馴染み「格付けチェック」が稲稜祭に登場！一般常識や音感、大隈重信についてのクイズなどの学院クイズに挑戦しよう！一流学院生の称号を手にするのは誰だ！？みんなの挑戦をお待ちしております！！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/1d.png" alt="1D組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">1-D</span>
+                            <span class="booth-room">3F-</span>
+                        </div>
+                        <h3>GKC</h3>
+                        <p class="booth-description">テレビでお馴染み「格付けチェック」が稲稜祭に登場！一般常識や音感、大隈重信についてのクイズなどの学院クイズに挑戦しよう！一流学院生の称号を手にするのは誰だ！？みんなの挑戦をお待ちしております！！</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/1e.png"
+                    data-classname="1-E"
+                    data-room="3F-"
+                    data-title="vs 早稲田"
+                    data-desc="あの人気番組が1Eに登場！？VS早稲田は、テレビ番組「VS嵐」をモチーフにした体験型アトラクション。豪華景品獲得を目指し、スリル満点のゲームに挑戦します。友達や家族と力を合わせて、ハイスコアに到達しよう！S305でお待ちしています。ぜひご参加ください！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/1e.png" alt="1E組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">1-E</span>
+                            <span class="booth-room">3F-</span>
+                        </div>
+                        <h3>vs 早稲田</h3>
+                        <p class="booth-description">あの人気番組が1Eに登場！？VS早稲田は、テレビ番組「VS嵐」をモチーフにした体験型アトラクション。豪華景品獲得を目指し、スリル満点のゲームに挑戦します。友達や家族と力を合わせて、ハイスコアに到達しよう！S305でお待ちしています。ぜひご参加ください！</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/1f.png"
+                    data-classname="1-F"
+                    data-room="3F-"
+                    data-title="本庄テッドマンション"
+                    data-desc="貴方は本庄テッドマンションに迷い込んでしまった!そこに住み着いている999人の幽霊達は、貴方を1000人目の幽霊にしようとしている。トロッコに乗って幽霊達から逃げ切り、館から脱出しよう!!"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/1f.png" alt="1F組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">1-F</span>
+                            <span class="booth-room">3F-</span>
+                        </div>
+                        <h3>本庄テッドマンション</h3>
+                        <p class="booth-description">貴方は本庄テッドマンションに迷い込んでしまった!そこに住み着いている999人の幽霊達は、貴方を1000人目の幽霊にしようとしている。トロッコに乗って幽霊達から逃げ切り、館から脱出しよう!!</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/1g.png"
+                    data-classname="1-G"
+                    data-room="3F-"
+                    data-title="呪われたメイド喫茶からの脱出"
+                    data-desc="『見つかったら、終わり。』さまよう呪われたメイドから逃げながら、謎を解き明かせ。悲鳴が響く呪いのメイド喫茶で、あなたは無事に脱出できるのか。"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/1g.png" alt="1G組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">1-G</span>
+                            <span class="booth-room">3F-</span>
+                        </div>
+                        <h3>呪われたメイド喫茶からの脱出</h3>
+                        <p class="booth-description">『見つかったら、終わり。』さまよう呪われたメイドから逃げながら、謎を解き明かせ。悲鳴が響く呪いのメイド喫茶で、あなたは無事に脱出できるのか。</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/1h.png"
+                    data-classname="1-H"
+                    data-room="3F-"
+                    data-title="詐欺ノ"
+                    data-desc="１Hでゲームに勝ってたくさんのチップを稼ごう！どんなゲームでもイカサマはルール違反…なんて考えは捨てて挑め！騙された者から脱落してゆく。イカサマだらけのカジノで嘘を見抜いて勝ち残れ！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/1h.png" alt="1H組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">1-H</span>
+                            <span class="booth-room">3F-</span>
+                        </div>
+                        <h3>詐欺ノ</h3>
+                        <p class="booth-description">１Hでゲームに勝ってたくさんのチップを稼ごう！どんなゲームでもイカサマはルール違反…なんて考えは捨てて挑め！騙された者から脱落してゆく。イカサマだらけのカジノで嘘を見抜いて勝ち残れ！</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- 2年生 -->
+        <section class="floor-section" id="year-2" data-floor-label="2年生の出し物" data-floor-title="2年生クラスの展示">
+            <div class="floor-section-header">
+                <div class="floor-badge">2年</div>
+                <div>
+                    <h2>2年生 / 出し物一覧</h2>
+                    <p>各クラスをタップして詳細を確認できます。</p>
+                </div>
+            </div>
+            <div class="booth-grid">
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/2a.png"
+                    data-classname="2-A"
+                    data-room="2F-"
+                    data-title="FINAL CALL"
+                    data-desc="学院最大級のクイズ大会─final call。出場者募集中！問題に合格した分だけ”あの人”の名言カードが貰えます。そんな特別な体験をしてみませんか？2-A、N309で待ってます✨"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/2a.png" alt="2A組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">2-A</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>FINAL CALL</h3>
+                        <p class="booth-description">学院最大級のクイズ大会─final call。出場者募集中！問題に合格した分だけ”あの人”の名言カードが貰えます。そんな特別な体験をしてみませんか？2-A、N309で待ってます✨</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/2b.png"
+                    data-classname="2-B"
+                    data-room="2F-"
+                    data-title="白峰荘"
+                    data-desc="かつて多くの客で賑わったホテルは、ある夜を境に突然閉鎖された。今では取り壊しを待つだけの廃墟だが、中に入った者は皆、"同じ言葉”を繰り返すーー「中にまだ誰かいる」最後の鍵はあなたの推理。あなたは無事にチェックアウトできるだろうか... "
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/2b.png" alt="2B組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">2-B</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>白峰荘</h3>
+                        <p class="booth-description">かつて多くの客で賑わったホテルは、ある夜を境に突然閉鎖された。今では取り壊しを待つだけの廃墟だが、中に入った者は皆、"同じ言葉”を繰り返すーー「中にまだ誰かいる」最後の鍵はあなたの推理。あなたは無事にチェックアウトできるだろうか... </p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/2c.png"
+                    data-classname="2-C"
+                    data-room="2F-"
+                    data-title="アルティメットオオクボンバー"
+                    data-desc="ここは誰も知らない秘境のジャングル。この先にはかわいい動物たちや、大久保山に潜む不思議な珍獣たちが待っています。しかし、危険な猛獣が現れることも…。武器を手に、船長と一緒に無事にジャングルを脱出できるかな？それでは、スリル満点のジャングルツアーへ出発進行！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/2c.png" alt="2C組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">2-C</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>アルティメットオオクボンバー</h3>
+                        <p class="booth-description">ここは誰も知らない秘境のジャングル。この先にはかわいい動物たちや、大久保山に潜む不思議な珍獣たちが待っています。しかし、危険な猛獣が現れることも…。武器を手に、船長と一緒に無事にジャングルを脱出できるかな？それでは、スリル満点のジャングルツアーへ出発進行！</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/2d.png"
+                    data-classname="2-D"
+                    data-room="2F-"
+                    data-title="メイド喫茶矢野軒"
+                    data-desc="メイド喫茶と矢野健二郎系ラーメンの異色の融合!?オリジナル矢野健デザインをふんだんに使ったお店で、可愛いメイドさんたちがグミでできたあま〜いラーメンを作ってご主人様たちをお待ちしております♡"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/2d.png" alt="2D組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">2-D</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>メイド喫茶矢野軒</h3>
+                        <p class="booth-description">メイド喫茶と矢野健二郎系ラーメンの異色の融合!?オリジナル矢野健デザインをふんだんに使ったお店で、可愛いメイドさんたちがグミでできたあま〜いラーメンを作ってご主人様たちをお待ちしております♡</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/2e.png"
+                    data-classname="2-E"
+                    data-room="2F-"
+                    data-title="サーカス"
+                    data-desc="サーカス中に発狂し、姿を消したピエロ。そのピエロが今も現れるといわれる廃サーカスに迷い込んでしまったあなた。この廃サーカスから脱出するため、ピエロから逃げながら、失われたチケットの半券を取り戻そう！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/2e.png" alt="2E組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">2-E</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>サーカス</h3>
+                        <p class="booth-description">サーカス中に発狂し、姿を消したピエロ。そのピエロが今も現れるといわれる廃サーカスに迷い込んでしまったあなた。この廃サーカスから脱出するため、ピエロから逃げながら、失われたチケットの半券を取り戻そう！</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/2f.png"
+                    data-classname="2-F"
+                    data-room="2F-"
+                    data-title="ストレス発散ルーム"
+                    data-desc="学校や人間関係、SNSなどでストレスがたまっていませんか？そんな日々のストレスを思いっきり発散しましょう！パンチングマシンや障子破りなど、様々なストレス解消ブースを用意しています。ぜひ気軽に遊びに来てください！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/2f.png" alt="2F組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">2-F</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>ストレス発散ルーム</h3>
+                        <p class="booth-description">学校や人間関係、SNSなどでストレスがたまっていませんか？そんな日々のストレスを思いっきり発散しましょう！パンチングマシンや障子破りなど、様々なストレス解消ブースを用意しています。ぜひ気軽に遊びに来てください！</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/2g.png"
+                    data-classname="2-G"
+                    data-room="2F-"
+                    data-title="HALLOWEEN CAFE"
+                    data-desc="トリックオアトリート！ようこそ、ハロウィンカフェへ。ここは仮装姿の店員がお出迎えする不思議なカフェです。美味しいカップチュロスと、写真映えするドリンクをご用意しました！2-Gで忘れられないハロウィンの思い出を作りませんか？"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/2g.png" alt="2G組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">2-G</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>HALLOWEEN CAFE</h3>
+                        <p class="booth-description">トリックオアトリート！ようこそ、ハロウィンカフェへ。ここは仮装姿の店員がお出迎えする不思議なカフェです。美味しいカップチュロスと、写真映えするドリンクをご用意しました！2-Gで忘れられないハロウィンの思い出を作りませんか？</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/2h.png"
+                    data-classname="2-H"
+                    data-room="2F-"
+                    data-title="わあ"
+                    data-desc="シューティングでさまざまなターゲットを狙い、次々と出されるミッションをクリアしながらゴールを目指すゲームです。正確な射撃と素早い判断力で、すべてのミッション達成に挑戦しよう！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/2h.png" alt="2H組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">2-H</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>わあ</h3>
+                        <p class="booth-description">シューティングでさまざまなターゲットを狙い、次々と出されるミッションをクリアしながらゴールを目指すゲームです。正確な射撃と素早い判断力で、すべてのミッション達成に挑戦しよう！</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- 3年生 -->
+        <section class="floor-section" id="year-3" data-floor-label="3年生の出し物" data-floor-title="3年生クラスの展示">
+            <div class="floor-section-header">
+                <div class="floor-badge">3年</div>
+                <div>
+                    <h2>3年生 / 出し物一覧</h2>
+                    <p>各クラスをタップして詳細を確認できます。</p>
+                </div>
+            </div>
+            <div class="booth-grid">
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/3a.png"
+                    data-classname="3-A"
+                    data-room="2F-"
+                    data-title="A Hunny pot adventure"
+                    data-desc="トロッコに乗ればそこはプーさんの可愛い世界。絵本のような空間を巡る途中で、ハチたちが大暴れ！？狙いを定めて撃退し高得点を目指そう！さあ、プーさんと一緒にワクワクいっぱいの旅へ出発だ！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/3a.png" alt="3A組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">3-A</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>A Hunny pot adventure</h3>
+                        <p class="booth-description">トロッコに乗ればそこはプーさんの可愛い世界。絵本のような空間を巡る途中で、ハチたちが大暴れ！？狙いを定めて撃退し高得点を目指そう！さあ、プーさんと一緒にワクワクいっぱいの旅へ出発だ！</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/3b.png"
+                    data-classname="3-B"
+                    data-room="3F-"
+                    data-title="お還りなさいませ 御主人様"
+                    data-desc="埼玉県本庄市の大久保山にひっそりと佇む廃洋館。かつて、この館では仕えていたメイドが謎の死を遂げた。主は館に呪いが掛かったと恐れ、館を捨てて姿を消したという。今もなお、メイドは主の帰りを待ち続けている。肝試しに訪れた君は、生きて帰れるだろうか。"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/3b.png" alt="3B組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">3-B</span>
+                            <span class="booth-room">3F-</span>
+                        </div>
+                        <h3>お還りなさいませ 御主人様</h3>
+                        <p class="booth-description">埼玉県本庄市の大久保山にひっそりと佇む廃洋館。かつて、この館では仕えていたメイドが謎の死を遂げた。主は館に呪いが掛かったと恐れ、館を捨てて姿を消したという。今もなお、メイドは主の帰りを待ち続けている。肝試しに訪れた君は、生きて帰れるだろうか。</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/3c.png"
+                    data-classname="3-C"
+                    data-room="2F-"
+                    data-title="コーヒーカップ"
+                    data-desc="人生はコーヒーカップのようには回らない。決められた軌道などない。長年、この学校で、多くの生徒を見送り続けてきたクラス担任T.H.氏も、その景色を誰より見た一人である。しかし、誰の胸にも、遠心力でさえ振り落とせない思い出が生きているはずだ。"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/3c.png" alt="3C組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">3-C</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>コーヒーカップ</h3>
+                        <p class="booth-description">人生はコーヒーカップのようには回らない。決められた軌道などない。長年、この学校で、多くの生徒を見送り続けてきたクラス担任T.H.氏も、その景色を誰より見た一人である。しかし、誰の胸にも、遠心力でさえ振り落とせない思い出が生きているはずだ。</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/3d.png"
+                    data-classname="3-D"
+                    data-room="2F-"
+                    data-title="喫茶店"
+                    data-desc="昭和レトロな空間で楽しむ、自慢のパフェ。3年D組では、パフェを始めとした、どこか懐かしい純喫茶をオープンします。ゆったりとした空間で、見た目も可愛い自慢のパフェを味わってみませんか？文化祭の思い出作りに、ぜひ3年D組へ遊びに来てください！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/3d.png" alt="3D組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">3-D</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>喫茶店</h3>
+                        <p class="booth-description"昭和レトロな空間で楽しむ、自慢のパフェ。3年D組では、パフェを始めとした、どこか懐かしい純喫茶をオープンします。ゆったりとした空間で、見た目も可愛い自慢のパフェを味わってみませんか？文化祭の思い出作りに、ぜひ3年D組へ遊びに来てください！</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/3e.png"
+                    data-classname="3-E"
+                    data-room="2F-"
+                    data-title="ハチャメチャ大冒険へ出発！"
+                    data-desc="【ハチャメチャ大冒険へ出発！】あの人気アトラクションが我がクラスに降臨！？ハチャメチャな世界へ飛び込み、予測不能の大暴走を体感せよ！スリルと爆笑が止まらない最高の体験が待っているぞ。さあ、今すぐ乗って一緒に弾け飛ぼう！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/3e.png" alt="3E組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">3-E</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>ハチャメチャ大冒険へ出発！</h3>
+                        <p class="booth-description">【ハチャメチャ大冒険へ出発！】あの人気アトラクションが我がクラスに降臨！？ハチャメチャな世界へ飛び込み、予測不能の大暴走を体感せよ！スリルと爆笑が止まらない最高の体験が待っているぞ。さあ、今すぐ乗って一緒に弾け飛ぼう！</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/3f.png"
+                    data-classname="3-F"
+                    data-room="2F-"
+                    data-title="HONJONES"
+                    data-desc="大久保山にそびえる謎の古墳。「絶対に入るな」という博士の厳重な警告を無視し、愚かな助手が勝手に入場ツアーを決行！探検車で乗り込むも、数々の罠と大久保山の怒りが襲いかかる！あなたは無事に脱出できるか！？"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/3f.png" alt="3F組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">3-F</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>HONJONES</h3>
+                        <p class="booth-description">大久保山にそびえる謎の古墳。「絶対に入るな」という博士の厳重な警告を無視し、愚かな助手が勝手に入場ツアーを決行！探検車で乗り込むも、数々の罠と大久保山の怒りが襲いかかる！あなたは無事に脱出できるか！？</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/3g.png"
+                    data-classname="3-G"
+                    data-room="2F-"
+                    data-title="ひろよしのご地層カフェ"
+                    data-desc="地学担当・新井宏嘉先生にちなんだ「ご地層カフェ」♡ 地層をイメージしたかわいいスイーツやドリンクをご用意しています♪可愛くてかっこいいメイドたちが、笑顔でお出迎えします♡ぜひご帰宅ください！♡"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/3g.png" alt="3G組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">3-G</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>ひろよしのご地層カフェ</h3>
+                        <p class="booth-description">地学担当・新井宏嘉先生にちなんだ「ご地層カフェ」♡ 地層をイメージしたかわいいスイーツやドリンクをご用意しています♪可愛くてかっこいいメイドたちが、笑顔でお出迎えします♡ぜひご帰宅ください！♡</p>
+                    </div>
+                </article>
+
+                <article class="booth-card" tabindex="0" data-modal="true"
+                    data-image="images/class/3h.png"
+                    data-classname="3-H"
+                    data-room="2F-"
+                    data-title="わあ"
+                    data-desc="鬼から逃げながらドットを集めてハイスコアを目指せ！"
+                    data-insta="https://www.instagram.com/">
+                    <div class="booth-image-wrap">
+                        <img src="images/class/3h.png" alt="3H組の出し物イメージ" loading="lazy">
+                    </div>
+                    <div class="booth-card-body">
+                        <div class="booth-meta">
+                            <span class="booth-class">3-H</span>
+                            <span class="booth-room">2F-</span>
+                        </div>
+                        <h3>わあ</h3>
+                        <p class="booth-description">鬼から逃げながらドットを集めてハイスコアを目指せ！</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <div class="favorites-float">
+        <button type="button" class="favorites-trigger" id="js-favorites-trigger" aria-expanded="false" aria-controls="js-favorites-panel">
+            <span class="favorites-trigger-icon" aria-hidden="true">★</span>
+            <span class="favorites-trigger-label">FAVORITE</span>
+        </button>
+        <div class="favorites-panel" id="js-favorites-panel" hidden>
+            <div class="favorites-panel-header">
+                <div>
+                    <p class="favorites-eyebrow">MY FAVORITES</p>
+                    <h2>お気に入り一覧</h2>
+                </div>
+                <button type="button" class="favorites-clear" id="js-clear-favorites">すべて解除</button>
+            </div>
+            <div class="favorites-list" id="js-favorites-list">
+                <p class="favorites-empty">まだお気に入りがありません。星マークを押して追加してください。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ブース詳細モーダル -->
+    <div class="booth-modal" id="js-booth-modal" role="dialog" aria-modal="true" aria-label="クラス詳細">
+        <div class="booth-modal-inner">
+            <button class="modal-close" id="js-modal-close" aria-label="閉じる">✕</button>
+            <div class="modal-image-wrap">
+                <img id="js-modal-image" src="" alt="">
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="modal-class-badge" id="js-modal-class"></span>
+                    <span class="modal-room-badge" id="js-modal-room"></span>
+                </div>
+                <h2 class="modal-title" id="js-modal-title"></h2>
+                <p class="modal-desc" id="js-modal-desc"></p>
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-favorite" id="js-modal-favorite">お気に入りに追加</button>
+                    <a href="#" class="btn-modal-insta" id="js-modal-insta" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                        </svg>
+                        Instagramを見る
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 稲稜祭実行委員会 広報</p>
+    </footer>
+</body>
+</html>

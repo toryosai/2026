@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イベント - 第45回 稲稜祭</title>
+    <meta name="description" content="第45回稲稜祭のイベントスケジュールです。ステージ・屋外・屋内ごとのタイムテーブルをご確認ください。">
+    <meta name="keywords" content="稲稜祭, イベント, スケジュール, タイムテーブル, ステージ">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body data-page="event">
+    <div class="grid-bg"></div>
+
+    <!-- ローディング -->
+    <div id="loading">
+        <span class="loading-ball">⚽</span>
+        <div class="loading-text">Now loading</div>
+        <div class="loading-percent" aria-live="polite">0%</div>
+        <div class="loading-bar-wrap">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-final">We have no limit...</div>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">稲稜祭 <span>'26</span></a>
+        </div>
+        <button class="hamburger" id="js-hamburger" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav" id="js-nav">
+            <ul>
+                <li><a href="index.html">TOP</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="event.html" class="is-current">EVENTS</a></li>
+                <li><a href="booth.html">BOOTHS</a></li>
+                <li><a href="access.html">ACCESS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ヒーロー -->
+        <section class="top event-top">
+            <div class="top-content">
+                <div class="top-theme"><span>SCHEDULE</span></div>
+                <h1 class="heading-hero js-split-text text-shadow-solid">EVENTS</h1>
+                <p class="fs-desc js-split-text" style="margin: 0 auto;">2日間にわたるステージ企画のタイムスケジュールです。<br>各ブロックをタップすると詳細が表示されます。</p>
+            </div>
+        </section>
+
+        <div class="event-main">
+
+            <!-- 会場説明エリア -->
+            <section class="stage-info-section anim-fade-up">
+                <h2 class="stage-info-title">STAGE INFO<span>会場案内</span></h2>
+                <div class="stage-info-grid">
+                    <div class="stage-info-card">
+                        <div class="stage-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 10l10-5 10 5-10 5z"/><path d="M2 14l10 5 10-5"/><path d="M2 18l10 5 10-5"/></svg></div>
+                        <h3>メインステージ</h3>
+                        <p>体育館内。ダンスや吹奏楽部など、大規模なパフォーマンスや全体イベントが行われるメイン会場です。</p>
+                    </div>
+                    <div class="stage-info-card">
+                        <div class="stage-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+                        <h3>稲稜ホール</h3>
+                        <p>座席完備のホール。演劇部やピアノ部など、じっくりと鑑賞したいプログラムを中心に開催されます。</p>
+                    </div>
+                    <div class="stage-info-card">
+                        <div class="stage-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+                        <h3>軽音ステージ</h3>
+                        <p>軽音楽部のライブや、有志バンドの演奏が行われる熱気あふれる特設ステージです。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 日付タブ -->
+            <div class="event-tabs" role="tablist">
+                <button class="event-tab-btn is-active" role="tab" data-day="day1" aria-selected="true">
+                    DAY 1 &nbsp;11/1（土）
+                </button>
+                <button class="event-tab-btn" role="tab" data-day="day2" aria-selected="false">
+                    DAY 2 &nbsp;11/2（日）
+                </button>
+            </div>
+
+            <!-- ==============================
+                 DAY 1 タイムテーブル
+                 ============================== -->
+            <div class="event-tab-panel is-active" data-day="day1" role="tabpanel">
+                <p class="event-section-label">11月1日（土） / 9:45 一般開場</p>
+
+                <div class="timetable-wrapper anim-fade-up">
+                    <div class="tt-headers">
+                        <div class="tt-header time-col">TIME</div>
+                        <div class="tt-header">メイン</div>
+                        <div class="tt-header">稲稜</div>
+                        <div class="tt-header">軽音</div>
+                    </div>
+
+                    <div class="tt-body" style="--total-mins: 360;">
+                        <div class="tt-open-line" style="top: calc(45 * var(--scale));"><span style="top: -16px;">9:45 一般開場</span></div>
+                        <div class="tt-time-axis">
+                            <div class="tt-time-label" style="top: calc(0 * var(--scale))">9:00</div>
+                            <div class="tt-time-label" style="top: calc(60 * var(--scale))">10:00</div>
+                            <div class="tt-time-label" style="top: calc(120 * var(--scale))">11:00</div>
+                            <div class="tt-time-label" style="top: calc(180 * var(--scale))">12:00</div>
+                            <div class="tt-time-label" style="top: calc(240 * var(--scale))">13:00</div>
+                            <div class="tt-time-label" style="top: calc(300 * var(--scale))">14:00</div>
+                            <div class="tt-time-label" style="top: calc(360 * var(--scale))">15:00</div>
+                        </div>
+
+                        <div class="tt-col col-main">
+                            <div class="tt-item" style="--start: 10; --duration: 35;" data-title="開会式" data-time="9:10 - 9:45" data-stage="メインステージ" data-desc="※学院生のみ参加可。一般開場は9:45からとなります。">
+                                <div class="tt-item-time">9:10-9:45</div>
+                                <div class="tt-item-title">開会式</div>
+                            </div>
+                            <div class="tt-item" style="--start: 60; --duration: 10;" data-title="演劇部 (10分)" data-time="10:00 - 10:10" data-stage="メインステージ" data-desc="演劇部によるオープニングパフォーマンス。">
+                                <div class="tt-item-time">10:00-10:10</div>
+                                <div class="tt-item-title">演劇部</div>
+                            </div>
+                            <div class="tt-item" style="--start: 75; --duration: 30;" data-title="書道部 (30分)" data-time="10:15 - 10:45" data-stage="メインステージ" data-desc="音楽に合わせて巨大な筆で作品を描き上げる大迫力の書道パフォーマンス。">
+                                <div class="tt-item-time">10:15-10:45</div>
+                                <div class="tt-item-title">書道部</div>
+                            </div>
+                            <div class="tt-item" style="--start: 110; --duration: 50;" data-title="有志① ダンス (50分)" data-time="10:50 - 11:40" data-stage="メインステージ" data-desc="D4CE, Lunc'a, Pherah*, HNJ48, Bunnies, NewBbit">
+                                <div class="tt-item-time">10:50-11:40</div>
+                                <div class="tt-item-title">有志① ダンス</div>
+                            </div>
+                            <div class="tt-item" style="--start: 170; --duration: 30;" data-title="応援部チア (30分)" data-time="11:50 - 12:20" data-stage="メインステージ" data-desc="華やかな衣装と笑顔で会場を盛り上げる応援部チアリーディングステージ。">
+                                <div class="tt-item-time">11:50-12:20</div>
+                                <div class="tt-item-title">応援部チア</div>
+                            </div>
+                            <div class="tt-item" style="--start: 240; --duration: 120;" data-title="軽音楽部 (120分)" data-time="13:00 - 15:00" data-stage="メインステージ" data-desc="メインステージでの軽音楽部スペシャルライブ！">
+                                <div class="tt-item-time">13:00-15:00</div>
+                                <div class="tt-item-title">軽音楽部</div>
+                            </div>
+                        </div>
+
+                        <div class="tt-col col-hall">
+                            <div class="tt-item" style="--start: 65; --duration: 30;" data-title="映画部 (30分)" data-time="10:05 - 10:35" data-stage="稲稜ホール" data-desc="映画部が制作したオリジナルショートフィルムの上映会。">
+                                <div class="tt-item-time">10:05-10:35</div>
+                                <div class="tt-item-title">映画部</div>
+                            </div>
+                            <div class="tt-item" style="--start: 95; --duration: 70;" data-title="演劇部 (70分)" data-time="10:35 - 11:45" data-stage="稲稜ホール" data-desc="演劇部による本格的な舞台公演。">
+                                <div class="tt-item-time">10:35-11:45</div>
+                                <div class="tt-item-title">演劇部</div>
+                            </div>
+                            <div class="tt-item" style="--start: 175; --duration: 15;" data-title="有志② 演奏 (15分)" data-time="11:55 - 12:10" data-stage="稲稜ホール" data-desc="Auréa">
+                                <div class="tt-item-time">11:55-12:10</div>
+                                <div class="tt-item-title">有志② 演奏</div>
+                            </div>
+                            <div class="tt-item" style="--start: 195; --duration: 60;" data-title="ピアノ部 (60分)" data-time="12:15 - 13:15" data-stage="稲稜ホール" data-desc="ピアノ部によるコンサート。">
+                                <div class="tt-item-time">12:15-13:15</div>
+                                <div class="tt-item-title">ピアノ部</div>
+                            </div>
+                            <div class="tt-item" style="--start: 270; --duration: 90;" data-title="応援部 (90分)" data-time="13:30 - 15:00" data-stage="稲稜ホール" data-desc="応援部による大迫力の演舞・応援ステージ。">
+                                <div class="tt-item-time">13:30-15:00</div>
+                                <div class="tt-item-title">応援部</div>
+                            </div>
+                        </div>
+
+                        <div class="tt-col col-keion">
+                            <div class="tt-item" style="--start: 60; --duration: 130;" data-title="軽音楽部 (130分)" data-time="10:00 - 12:10" data-stage="軽音ステージ" data-desc="軽音楽部所属のバンドによるライブパフォーマンス。">
+                                <div class="tt-item-time">10:00-12:10</div>
+                                <div class="tt-item-title">軽音楽部</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 2 -->
+            <div class="event-tab-panel" data-day="day2" role="tabpanel">
+                <p class="event-section-label">11月2日（日） / 9:30 一般開場</p>
+                <div class="timetable-wrapper">
+                    <div class="tt-headers">
+                        <div class="tt-header time-col">TIME</div>
+                        <div class="tt-header">メイン</div>
+                        <div class="tt-header">稲稜</div>
+                        <div class="tt-header">軽音</div>
+                    </div>
+                    <div class="tt-body" style="--total-mins: 330;">
+                        <div class="tt-open-line" style="top: calc(30 * var(--scale));"><span style="top: -16px;">9:30 一般開場</span></div>
+                        <div class="tt-time-axis">
+                            <div class="tt-time-label" style="top: calc(0 * var(--scale))">9:00</div>
+                            <div class="tt-time-label" style="top: calc(60 * var(--scale))">10:00</div>
+                            <div class="tt-time-label" style="top: calc(120 * var(--scale))">11:00</div>
+                            <div class="tt-time-label" style="top: calc(180 * var(--scale))">12:00</div>
+                            <div class="tt-time-label" style="top: calc(240 * var(--scale))">13:00</div>
+                            <div class="tt-time-label" style="top: calc(300 * var(--scale))">14:00</div>
+                        </div>
+                        <div class="tt-col col-main">
+                            <div class="tt-item" style="--start: 60; --duration: 35;" data-title="有志③ ダンス (35分)" data-time="10:00 - 10:35" data-stage="メインステージ" data-desc="ナツメグ, E.Y.S.M., LilyPop, めろりんってみて, S.H. Breakers">
+                                <div class="tt-item-time">10:00-10:35</div>
+                                <div class="tt-item-title">有志③ ダンス</div>
+                            </div>
+                            <div class="tt-item" style="--start: 100; --duration: 15;" data-title="有志④ ダンス・漫才 (15分)" data-time="10:40 - 10:55" data-stage="メインステージ" data-desc="ハピエネ, 南雲ロマンス">
+                                <div class="tt-item-time">10:40-10:55</div>
+                                <div class="tt-item-title">有志④ ダンス</div>
+                            </div>
+                            <div class="tt-item" style="--start: 120; --duration: 30;" data-title="書道部 (30分)" data-time="11:00 - 11:30" data-stage="メインステージ" data-desc="書道部パフォーマンス（2日目）。">
+                                <div class="tt-item-time">11:00-11:30</div>
+                                <div class="tt-item-title">書道部</div>
+                            </div>
+                            <div class="tt-item" style="--start: 160; --duration: 50;" data-title="WDC (50分)" data-time="11:40 - 12:30" data-stage="メインステージ" data-desc="Waseda Dance Clubによるダンスショーケース。">
+                                <div class="tt-item-time">11:40-12:30</div>
+                                <div class="tt-item-title">WDC</div>
+                            </div>
+                            <div class="tt-item" style="--start: 220; --duration: 15;" data-title="有志⑥ 演奏 (15分)" data-time="12:40 - 12:55" data-stage="メインステージ" data-desc="元ブラスバンド部3年">
+                                <div class="tt-item-time">12:40-12:55</div>
+                                <div class="tt-item-title">有志⑥ 演奏</div>
+                            </div>
+                            <div class="tt-item" style="--start: 240; --duration: 90;" data-title="応援部 (90分)" data-time="13:00 - 14:30" data-stage="メインステージ" data-desc="応援部による大トリステージ。">
+                                <div class="tt-item-time">13:00-14:30</div>
+                                <div class="tt-item-title">応援部</div>
+                            </div>
+                        </div>
+                        <div class="tt-col col-hall">
+                            <div class="tt-item" style="--start: 60; --duration: 20;" data-title="ブラスバンド部 (20分)" data-time="10:00 - 10:20" data-stage="稲稜ホール" data-desc="ブラスバンド部によるアンサンブル演奏。">
+                                <div class="tt-item-time">10:00-10:20</div>
+                                <div class="tt-item-title">ブラスバンド</div>
+                            </div>
+                            <div class="tt-item" style="--start: 95; --duration: 60;" data-title="グリークラブ (60分)" data-time="10:35 - 11:35" data-stage="稲稜ホール" data-desc="男声合唱をお届けします。">
+                                <div class="tt-item-time">10:35-11:35</div>
+                                <div class="tt-item-title">グリークラブ</div>
+                            </div>
+                            <div class="tt-item" style="--start: 160; --duration: 15;" data-title="有志⑤ 演劇 (15分)" data-time="11:40 - 11:55" data-stage="稲稜ホール" data-desc="劇団じぶろ">
+                                <div class="tt-item-time">11:40-11:55</div>
+                                <div class="tt-item-title">有志⑤ 演劇</div>
+                            </div>
+                            <div class="tt-item" style="--start: 175; --duration: 70;" data-title="ピアノ部 (70分)" data-time="11:55 - 13:05" data-stage="稲稜ホール" data-desc="ピアノ部演奏会。">
+                                <div class="tt-item-time">11:55-13:05</div>
+                                <div class="tt-item-title">ピアノ部</div>
+                            </div>
+                            <div class="tt-item" style="--start: 260; --duration: 70;" data-title="演劇部 (70分)" data-time="13:20 - 14:30" data-stage="稲稜ホール" data-desc="演劇部公演（2日目）。">
+                                <div class="tt-item-time">13:20-14:30</div>
+                                <div class="tt-item-title">演劇部</div>
+                            </div>
+                        </div>
+                        <div class="tt-col col-keion">
+                            <div class="tt-item" style="--start: 40; --duration: 290;" data-title="軽音楽部 (290分)" data-time="9:40 - 14:30" data-stage="軽音ステージ" data-desc="軽音楽部ロングランライブ！">
+                                <div class="tt-item-time">9:40-14:30</div>
+                                <div class="tt-item-title">軽音楽部</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /event-main -->
+    </main>
+
+    <div class="favorites-float">
+        <button type="button" class="favorites-trigger" id="js-favorites-trigger" aria-expanded="false" aria-controls="js-favorites-panel">
+            <span class="favorites-trigger-icon" aria-hidden="true">★</span>
+            <span class="favorites-trigger-label">FAVORITE</span>
+        </button>
+        <div class="favorites-panel" id="js-favorites-panel" hidden>
+            <div class="favorites-panel-header">
+                <div>
+                    <p class="favorites-eyebrow">MY FAVORITES</p>
+                    <h2>お気に入り一覧</h2>
+                </div>
+                <button type="button" class="favorites-clear" id="js-clear-favorites">すべて解除</button>
+            </div>
+            <div class="favorites-list" id="js-favorites-list">
+                <p class="favorites-empty">まだお気に入りがありません。星マークを押して追加してください。</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 稲稜祭実行委員会 広報</p>
+    </footer>
+
+    <!-- イベント詳細モーダル -->
+    <div id="js-event-modal" class="booth-modal">
+        <div class="booth-modal-inner" style="max-width: 500px; max-height: 80vh;">
+            <button id="js-event-modal-close" class="modal-close" aria-label="閉じる">&times;</button>
+            <div class="modal-body">
+                <div class="modal-meta" style="margin-bottom: 8px;">
+                    <span id="js-event-modal-stage" class="modal-class-badge" style="background: var(--accent2);"></span>
+                    <span id="js-event-modal-time" class="modal-room-badge" style="border: none; padding: 0; font-weight: 900;"></span>
+                </div>
+                <h3 id="js-event-modal-title" class="modal-title" style="margin-bottom: 20px;"></h3>
+                <div id="js-event-modal-desc" class="modal-desc" style="font-size: 0.95rem; line-height: 1.8;"></div>
+                <div class="modal-actions" style="margin-top: 20px;">
+                    <button type="button" class="btn-modal-favorite" id="js-event-modal-favorite">お気に入りに追加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

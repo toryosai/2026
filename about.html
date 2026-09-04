@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>開催要項 - 第45回 稲稜祭</title>
+    <meta name="description" content="第45回稲稜祭の開催要項。今年のテーマ「W杯」に込めた想いや、生徒会長・実行委員長の挨拶、パンフレット情報などを掲載しています。">
+    <meta name="keywords" content="稲稜祭, 早稲田大学本庄高等学院, 開催要項, W杯, 挨拶, パンフレット">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+
+    <!-- about.html 専用の追加スタイル（ここだけのデザイン用） -->
+    <style>
+        /* ページ固有の装飾 */
+        .about-top {
+            background-image: linear-gradient(135deg, rgba(247, 244, 235, 0.9), rgba(255, 255, 255, 0.4)), url('images/bg.png');
+        }
+
+        .about-main {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* 開催概要ブロック */
+        .info-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid var(--text);
+            padding: 40px;
+            position: relative;
+            margin-bottom: 80px;
+            box-shadow: 12px 12px 0 rgba(23, 50, 79, 0.1);
+        }
+        .info-card::before {
+            content: 'INFORMATION';
+            position: absolute;
+            top: -18px;
+            left: 30px;
+            background: var(--accent);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            padding: 4px 16px;
+            letter-spacing: 0.1em;
+            font-size: 1.1rem;
+        }
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .info-list li {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+        .info-term {
+            width: 120px;
+            font-weight: 900;
+            color: var(--accent2);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .info-desc {
+            flex: 1;
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+        .info-desc span.date {
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        /* テーマセクション */
+        .theme-section {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 60px 20px;
+            background: linear-gradient(to bottom, rgba(255,122,89,0.05), rgba(106,183,232,0.05));
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .theme-section::after {
+            content: 'WORLD CUP';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12vw;
+            font-weight: 900;
+            color: rgba(23, 50, 79, 0.03);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .slogan {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 0.2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .theme-title {
+            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            color: var(--text);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            text-shadow: 3px 3px 0 rgba(106, 183, 232, 0.3);
+        }
+        .theme-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 挨拶セクション */
+        .greeting-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        .message-box {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            padding: 40px 30px;
+            position: relative;
+        }
+        .message-box::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--accent2);
+            opacity: 0.3;
+            line-height: 1;
+        }
+        /* ⬇️ ここから追加・変更 ⬇️ */
+        .message-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed var(--border);
+        }
+        .message-face {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            flex-shrink: 0;
+            background-color: var(--bg-alt);
+        }
+        .message-title-wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .message-role {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .message-name {
+            font-size: 1.3rem;
+            font-weight: 900;
+            /* 下線と余白は header 側に移動したため、ここはこれだけになります */
+        }
+        /* ⬆️ ここまで ⬆️ */
+        .message-text {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--muted);
+        }
+        .message-text p {
+            margin-bottom: 1em;
+        }
+        .message-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* パンフレットセクション */
+        .pamphlet-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: var(--text);
+            color: white;
+            padding: 50px;
+            border-radius: 12px;
+        }
+        .pamphlet-img {
+            flex: 0 0 35%;
+            position: relative;
+        }
+        .pamphlet-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 15px 15px 0 rgba(255, 122, 89, 0.8);
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+        }
+        .pamphlet-img:hover img {
+            transform: rotate(0deg) scale(1.02);
+        }
+        .pamphlet-content {
+            flex: 1;
+        }
+        .pamphlet-label {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            font-weight: 800;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            margin-bottom: 16px;
+            letter-spacing: 0.1em;
+        }
+        .pamphlet-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .pamphlet-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+        }
+        .btn-pamphlet {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--text);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.2s;
+        }
+        .btn-pamphlet:hover {
+            background: var(--accent2);
+            color: white;
+        }
+
+        /* スマホ用調整 */
+        @media (max-width: 768px) {
+            .info-card { padding: 30px 20px; }
+            .info-list li { flex-direction: column; gap: 8px; }
+            .greeting-section { grid-template-columns: 1fr; gap: 30px; }
+            .pamphlet-section { flex-direction: column; padding: 40px 24px; gap: 30px; }
+            .pamphlet-img { flex: none; width: 80%; margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <!-- ローディング -->
+    <div id="loading">
+        <span class="loading-ball">⚽</span>
+        <div class="loading-text">Now loading</div>
+        <div class="loading-percent" aria-live="polite">0%</div>
+        <div class="loading-bar-wrap">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-final">We have no limit...</div>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">稲稜祭 <span>'26</span></a>
+        </div>
+        <button class="hamburger" id="js-hamburger" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav" id="js-nav">
+            <ul>
+                <li><a href="index.html">TOP</a></li>
+                <li><a href="about.html" class="is-current">ABOUT</a></li>
+                <li><a href="event.html">EVENTS</a></li>
+                <li><a href="booth.html">BOOTHS</a></li>
+                <li><a href="access.html">ACCESS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ヒーロー -->
+        <section class="top about-top">
+            <div class="top-content">
+                <div class="top-theme"><span>ABOUT</span></div>
+                <h1 class="heading-hero js-split-text text-shadow-solid">ABOUT US</h1>
+                <p class="fs-desc js-split-text" style="margin: 0 auto;">第45回 稲稜祭の開催要項・テーマをご紹介します。</p>
+            </div>
+        </section>
+
+        <div class="about-main">
+
+            <!-- 開催要項 -->
+            <section class="info-card anim-fade-up">
+                <ul class="info-list">
+                    <li>
+                        <div class="info-term">DATE</div>
+                        <div class="info-desc">
+                            <span class="date">2026年 11月1日 (土) 9:45〜18:00</span><br>
+                            <span class="date">2026年 11月2日 (日) 9:30〜16:00</span><br>
+                            <span style="font-size: 0.85rem; color: var(--muted);">※各日、公開終了30分前に受付を終了いたします。</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="info-term">PLACE</div>
+                        <div class="info-desc">
+                            早稲田大学本庄高等学院 キャンパス内<br>
+                            <span style="font-size: 0.85rem; color: var(--muted);">埼玉県本庄市栗崎239-3</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="info-term">TARGET</div>
+                        <div class="info-desc">
+                            在校生・保護者・中学生および一般の方<br>
+                            <span style="font-size: 0.85rem; color: var(--muted);">※事前予約は不要です。どなたでもご来場いただけます。</span>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- テーマ -->
+            <section class="theme-section anim-fade-up">
+                <span class="slogan">スローガン</span>
+                <h2 class="theme-title">W杯</h2>
+                <div class="theme-text">
+                    <p>今年の稲稜祭のテーマは「W杯（ワールドカップ）」。</p>
+                    <p>学院生一人ひとりが国の代表選手のように個性を発揮し、<br class="pc-only">クラスや部活というチームで団結してひとつの目標に向かう姿を、<br class="pc-only">世界中が熱狂するあの舞台に重ね合わせました。</p>
+                    <p>早稲田（Waseda）の「W」を冠したこの祭典で、<br class="pc-only">私たちだからこそ創り出せる、熱く、限界のない非日常をお届けします。</p>
+                    <p style="margin-top: 15px; font-weight: bold; color: var(--text);">We have no limit. 私たちの熱狂に、限界はない。</p>
+                </div>
+            </section>
+
+            <!-- 挨拶 -->
+            <!-- 挨拶 -->
+            <section class="greeting-section">
+                <!-- 生徒会長の挨拶 -->
+                <div class="message-box anim-fade-up">
+                    <div class="message-header">
+                        <!-- srcのパスを実際の写真に差し替えてください -->
+                        <img src="https://placehold.jp/150x150.png?text=Photo" alt="生徒会長" class="message-face">
+                        <div class="message-title-wrap">
+                            <span class="message-role">第44期 生徒会長</span>
+                            <h3 class="message-name">町田和真</h3>
+                        </div>
+                    </div>
+                    <div class="message-text">
+                        <p>みなさんこんにちは。生徒会長の町田和真です。今年度も無事に稲稜祭を開催できること、生徒会長として非常に喜ばしく思います。</p>
+                        <p>さて、今年のテーマは「W杯」ということで、今年開催されたサッカーFIFAワールドカップはご覧になったでしょうか。決勝トーナメントの日本対ブラジル戦のキックオフがテスト期間中の深夜2時だったことを覚えている学院生も多いでしょう。１年に５度の定期テストと、4年に１度のワールドカップを天秤にかけた結果、勉強不足×徹夜明けという最悪のコンディションで『絶対に負けられない戦い』に挑むことを決意した学院生がいたかもしれません。</p>
+                        <p>そんな冗談はさておき、今回のFIFAワールドカップの盛り上がりも凄まじいものでした。いかなる競技でも、試合の盛り上がりは主役の選手１人１人が作り上げているものです。さらに、その選手が活躍する裏には、選手を支える様々な人々の存在があります。</p>
+                        <p>学院生にとって、稲稜祭はワールドカップに匹敵する盛り上がりを見せる行事です。私もこれまで稲稜祭に参加してきて、稲稜祭当日の盛り上がりは学院生一人一人の協力と情熱によって作り上げているのだなと毎回実感しています。ただ、忘れてはいけないのは、主役である学院生の活躍は、先生方や地域の方々の協力によって支えられているということです。</p>
+                        <p>主役によって作り出される活気、そして、その主役を支える大勢の人々。ワールドカップと稲稜祭の盛り上がりにはこのような共通点があるのですね。</p>
+                        <p>両者の比較を踏まえて、私が稲稜祭の主役たちに言いたいことはただ１つです。</p>
+                        <p>１年に１度の稲稜祭、最高に盛り上げるぞーー！！！！！</p>
+                    </div>
+                </div>
+
+                <!-- 実行委員長の挨拶 -->
+                <div class="message-box anim-fade-up" style="transition-delay: 0.1s;">
+                    <div class="message-header">
+                        <!-- srcのパスを実際の写真に差し替えてください -->
+                        <img src="images/2.jpg" alt="実行委員長" class="message-face">
+                        <div class="message-title-wrap">
+                            <span class="message-role">第45代 稲稜祭実行委員長</span>
+                            <h3 class="message-name">伊藤真里恵</h3>
+                        </div>
+                    </div>
+                    <div class="message-text">
+                        <p>皆さん、こんにちは！稲稜祭実行委員長の伊藤真里恵です。いよいよ稲稜祭が開催されます。学院生の皆さんも、来校者の皆さんも、全力で楽しむ準備はできていますか！！！皆さんご存じの通り、稲稜祭は本学院を代表する、とても大きな学校行事の一つです。年に一度しかないこの文化祭という大きな行事を、学院生の皆さんには心から、思う存分楽しんでほしいと思っています。</p>
+                        <p>私は、今日に至るまでの約3年間の学院生活を、稲稜祭実行委員会を中心に過ごしてきました。そんな私からの一番の願いは、皆さんが稲稜祭を楽しんでいる姿をこの目で見たい！ということです。そして私の長年の目標は、稲稜祭当日だけでなく、そこに至るまでの準備期間も、皆さんが楽しめる環境をつくることでした。だからこそ、各クラスが知恵を振り絞りながら楽しそうに準備を進めている姿や、稲稜祭のために部活動に全力で取り組んでいる姿をたくさん見ることができ、私はすでに胸がいっぱいです。この勢いにのったまま、稲稜祭当日の2日間も、帰り道でふと「楽しかったな」と思えるような、素敵な思い出になれば幸いです。</p>
+                        <p>そして、来校者の皆さん。本学院への受験をお考えの方も、そうでない方も、稲稜祭は本学院を最も身近に感じていただける機会の一つだと思います。学院生一人ひとりの個性の豊かさや、自由に自分のやりたいことに挑戦できる本学院の魅力を、ぜひ感じ取っていただけたら嬉しいです。</p>
+                        <p>今年度のスローガンは「冠」です。一人ひとりがそれぞれの個性を爆発させ、唯一無二の冠を被ることができるような、素敵な2日間になりますように。</p>
+                        <p>最後になりましたが、稲稜祭の開催にあたりご協力・ご支援くださった先生方をはじめ、関係者の皆様に心より感謝申し上げます。</p>
+                        <p>2日間の稲稜祭を思いっきり楽しみましょう！</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- パンフレット紹介 -->
+            <section class="pamphlet-section anim-fade-up">
+                <div class="pamphlet-img">
+                    <!-- TODO: 実際のパンフレット表紙画像に差し替えてください -->
+                    <img src="https://placehold.jp/17324f/ffffff/400x560.png?text=Pamphlet%0AIllustration" alt="第45回稲稜祭 パンフレット表紙イラスト">
+                </div>
+                <div class="pamphlet-content">
+                    <span class="pamphlet-label">OFFICIAL PAMPHLET</span>
+                    <h2 class="pamphlet-title">公式パンフレット配布中</h2>
+                    <div class="pamphlet-text">
+                        <p>今年のパンフレットは、テーマである「W杯」にちなみ、美術部の有志が手掛けた躍動感あふれるイラストが表紙を飾っています。</p>
+                        <p>各クラス・団体の企画紹介はもちろん、構内マップやタイムテーブル、実行委員の裏話まで、稲稜祭を120%楽しむための情報が満載です。<br>当日、受付にて無料で配布しておりますので、ぜひお手に取って会場を巡ってください。</p>
+                    </div>
+                    <!-- （※PDF版などを載せる場合のボタン例） -->
+                    <!-- <a href="#" class="btn-pamphlet">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        PDF版を見る (XXMB)
+                    </a> -->
+                </div>
+            </section>
+
+        </div><!-- /about-main -->
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 稲稜祭実行委員会 広報</p>
+    </footer>
+</body>
+</html>

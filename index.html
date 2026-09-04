@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第45回 稲稜祭</title>
+    <meta name="description" content="稲稜祭は、早稲田大学本庄高等学院の文化祭です">
+    <meta name="keywords" content="稲稜祭, とうりょうさい, 早稲田大学本庄高等学院, 早稲田, 早稲田大学, 早本, 文化祭, イベント, 展示">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <!-- ローディング画面 -->
+    <div id="loading" aria-live="polite">
+        <span class="loading-ball">⚽</span>
+        <div class="loading-text">KICK OFF</div>
+        <div class="loading-percent" aria-live="polite">0%</div>
+        <div class="loading-bar-wrap">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-final">WASEDA CUP 2026</div>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">稲稜祭 <span>'26</span></a>
+        </div>
+        <button class="hamburger" id="js-hamburger" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav" id="js-nav">
+            <ul>
+                <li><a href="index.html" class="is-current">TOP</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="event.html">EVENTS</a></li>
+                <li><a href="booth.html">BOOTHS</a></li>
+                <li><a href="access.html">ACCESS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- トップセクション -->
+        <section class="top">
+            <!-- 装飾ボール -->
+            <div class="top-deco-ball" aria-hidden="true">⚽</div>
+            <div class="top-deco-ball" aria-hidden="true">⚽</div>
+            <div class="top-deco-ball" aria-hidden="true">⚽</div>
+
+            <div class="top-content">
+                <div class="top-theme"><span>W杯</span></div>
+                <h1 class="heading-hero js-split-text text-shadow-solid">第45回 稲稜祭</h1>
+
+                <div class="top-date-badge">
+                    <span class="badge-dot"></span>
+                    <span>10月31日-11月1日</span>
+                    <span>9:00 START</span>
+                </div>
+
+                <p class="fs-desc js-split-text" style="margin: 0 auto;">熱狂のキックオフ。本庄高等学院がW杯に染まる2日間。</p>
+
+                <div class="top-sns">
+                    <a href="https://www.instagram.com/inryo_sai/" target="_blank" rel="noopener" class="btn-insta">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                        </svg>
+                        Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- フルウィズセクション 1: 開催要項 -->
+        <section class="full-section">
+            <div class="fs-image" style="background-image: url('images/start.jpg');"></div>
+            <div class="fs-content">
+                <div class="pattern-stripe"></div>
+                <h2 class="fs-title text-shadow-solid js-split-text">開催要項</h2>
+                <div class="anim-fade-up">
+                    <p class="fs-desc">10月31日-11月1日 9:10開場。<br>最終日は16:00まで。<br>各クラス・団体が作り上げる圧倒的なパフォーマンスと展示をお見逃しなく。</p>
+                    <a href="about.html" class="btn-solid">詳細を見る</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- フルウィズセクション 2: クラス企画 -->
+        <section class="full-section">
+            <div class="fs-image" style="background-image: url('images/wall1.jpg');"></div>
+            <div class="fs-content">
+                <div class="pattern-stripe"></div>
+                <h2 class="fs-title text-shadow-solid js-split-text">クラス企画</h2>
+                <div class="anim-fade-up">
+                    <p class="fs-desc">各クラスがW杯出場国をテーマに装飾！<br>現地の熱気を再現したアトラクションや、趣向を凝らした展示で皆さんをお迎えします。</p>
+                    <a href="booth.html" class="btn-solid">企画一覧へ</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- フルウィズセクション 3: イベント -->
+        <section class="full-section">
+            <div class="fs-image" style="background-image: url('images/event.jpg'); filter: hue-rotate(20deg);"></div>
+            <div class="fs-content">
+                <div class="pattern-stripe"></div>
+                <h2 class="fs-title text-shadow-solid js-split-text">イベント</h2>
+                <div class="anim-fade-up">
+                    <p class="fs-desc">ステージパフォーマンス、スポーツ大会、屋台など多彩なイベントが2日間にわたって展開されます。<br>タイムスケジュールはこちらから。</p>
+                    <a href="event.html" class="btn-solid">スケジュールを見る</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- フルウィズセクション 4: アクセス -->
+        <section class="full-section">
+            <div class="fs-image" style="background-image: url('https://static.wixstatic.com/media/dd621f_80468349f8c541d7b48b3033a93d6e29~mv2.png');"></div>
+            <div class="fs-content">
+                <div class="pattern-stripe"></div>
+                <h2 class="fs-title text-shadow-solid js-split-text">アクセス</h2>
+                <div class="anim-fade-up">
+                    <p class="fs-desc">早稲田大学本庄高等学院<br>JR本庄駅、または新幹線本庄早稲田駅より。<br>ご来場は公共交通機関をご利用ください。</p>
+                    <a href="access.html" class="btn-solid">MAPを開く</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 稲稜祭実行委員会 広報</p>
+    </footer>
+</body>
+</html>
