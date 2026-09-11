@@ -643,5 +643,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-
 });
