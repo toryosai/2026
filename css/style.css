@@ -1909,3 +1909,108 @@ main {
         font-size: 1.3rem;
     }
 }
+
+
+
+/* ----------------------------------
+   トップページ：Instagramセクション
+---------------------------------- */
+.instagram-section {
+    padding: 80px 20px;
+    background: var(--bg-alt);
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+.instagram-header {
+    margin-bottom: 40px;
+}
+.instagram-header h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+.instagram-header p {
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+.btn-insta-large {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+    padding: 16px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 800;
+    box-shadow: 0 10px 20px rgba(220, 39, 67, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-insta-large:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(220, 39, 67, 0.4);
+    color: white;
+}
+.btn-insta-large svg {
+    width: 24px;
+    height: 24px;
+}
+.instagram-feed {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* ----------------------------------
+   トップページ：無限横スクロールスライダー
+---------------------------------- */
+.marquee-slider {
+    width: 100%;
+    overflow: hidden;
+    background: var(--bg-alt); /* 背景色。不要なら transparent に */
+    padding: 20px 0;
+    display: flex;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    /* 30sは速度です。数値を小さくすると速く、大きくすると遅くなります */
+    animation: marquee 30s linear infinite; 
+}
+
+/* スライダーがホバーされたら一時停止（お好みで） */
+.marquee-slider:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.marquee-track img {
+    height: 250px; /* 画像の高さ */
+    width: auto;
+    object-fit: cover;
+    margin-right: 20px; /* 画像と画像の間の隙間 */
+    border-radius: 8px; /* 角を少し丸くする */
+    box-shadow: 0 4px 12px rgba(23, 50, 79, 0.1);
+}
+
+/* ちょうど半分の位置（5枚目と6枚目の間）まできたら一瞬で0に戻すことで無限ループさせる */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* スマホ用の調整（画像の高さを少し小さくする） */
+@media (max-width: 768px) {
+    .marquee-track img {
+        height: 180px;
+        margin-right: 12px;
+    }
+}
