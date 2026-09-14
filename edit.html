@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タイムテーブル管理 - 第45回 稲稜祭</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        .admin-wrap { max-width: 1000px; margin: 40px auto; padding: 30px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .admin-title { text-align: center; margin-bottom: 30px; }
+        .admin-title h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 10px; color: var(--text); }
+        
+        .tab-menu { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 20px; }
+        .tab-btn { padding: 12px 30px; font-weight: 800; cursor: pointer; color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -2px; user-select: none; }
+        .tab-btn.is-active { color: var(--text); border-bottom-color: var(--accent); }
+
+        /* エディター部分 */
+        .editor-box { background: rgba(247, 244, 235, 0.6); border: 2px dashed var(--border); border-radius: 8px; padding: 25px; margin-bottom: 40px; }
+        .editor-box h3 { font-size: 1.2rem; font-weight: 900; margin-bottom: 20px; color: var(--text); display: flex; justify-content: space-between; align-items: center; }
+        
+        .input-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: 800; margin-bottom: 5px; color: var(--text); }
+        .input-control { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: inherit; }
+        
+        .btn { padding: 10px 20px; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; transition: 0.2s; font-size: 1rem; }
+        .btn-add { background: var(--accent); color: white; padding: 12px 24px; box-shadow: 0 4px 10px rgba(255, 122, 89, 0.3); }
+        .btn-add:hover { background: #e66a4d; transform: translateY(-2px); }
+        .btn-delete { background: #e74c3c; color: white; }
+        .btn-cancel { background: var(--muted); color: white; padding: 6px 12px; font-size: 0.85rem; }
+        .btn-generate { background: var(--text); color: white; padding: 15px 40px; font-size: 1.2rem; display: block; margin: 0 auto; }
+        
+        .empty-state { text-align: center; padding: 20px 0; }
+        .add-buttons { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+
+        /* プレビュー部分 */
+        .preview-box { border: 1px solid var(--border); border-radius: 8px; background: white; max-height: 600px; overflow: auto; margin-bottom: 40px; position: relative; }
+        .preview-box .tt-headers { position: sticky; top: 0; z-index: 50; }
+        
+        /* プレビュー内のイベントブロックのスタイル調整 */
+        .preview-box .tt-item { cursor: pointer; transition: 0.2s; z-index: 10; border: 2px solid transparent; }
+        .preview-box .tt-item:hover { transform: scale(1.02); z-index: 20; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .preview-box .tt-item.is-editing { border-color: #e74c3c; z-index: 30; transform: scale(1.02); box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.2); }
+
+        /* 出力エリア */
+        .code-output { background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px; margin-top: 20px; }
+        .code-output textarea { width: 100%; height: 300px; background: #2d2d2d; color: #fff; border: 1px solid #444; padding: 15px; font-family: monospace; font-size: 0.9rem; margin: 15px 0; border-radius: 4px; resize: vertical; }
+    </style>
+</head>
+<body data-page="edit">
+    <div class="grid-bg"></div>
+
+    <div id="app">
+        <div class="admin-wrap anim-fade-up is-animated">
+            <div class="admin-title">
+                <h2>タイムテーブル編集ツール</h2>
+                <p>イベントを追加・編集し、更新用HTMLを生成します。</p>
+            </div>
+
+            <div class="tab-menu">
+                <div class="tab-btn" :class="{ 'is-active': currentDay === 'day1' }" @click="setDay('day1')">DAY 1 (11/1)</div>
+                <div class="tab-btn" :class="{ 'is-active': currentDay === 'day2' }" @click="setDay('day2')">DAY 2 (11/2)</div>
+            </div>
+
+            <div class="editor-box">
+                <div v-if="editingEvent">
+                    <h3>
+                        ✏️ イベントを編集中
+                        <button class="btn btn-cancel" @click="cancelEdit">選択解除</button>
+                    </h3>
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label>ステージ</label>
+                            <select v-model="editingEvent.stage" class="input-control">
+                                <option value="main">メインステージ</option>
+                                <option value="hall">稲稜ホール</option>
+                                <option value="keion">軽音ステージ</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>タイトル</label>
+                            <input type="text" v-model="editingEvent.title" class="input-control" placeholder="タイトルを入力">
+                        </div>
+                        <div class="input-group">
+                            <label>開始時間</label>
+                            <input type="time" v-model="editingEvent.startTime" class="input-control">
+                        </div>
+                        <div class="input-group">
+                            <label>終了時間</label>
+                            <input type="time" v-model="editingEvent.endTime" class="input-control">
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top: 15px;">
+                        <label>詳細・説明</label>
+                        <input type="text" v-model="editingEvent.desc" class="input-control" placeholder="説明を入力（任意）">
+                    </div>
+                    <div style="text-align: right; margin-top: 20px;">
+                        <button class="btn btn-delete" @click="deleteEvent(editingEvent.id)">このイベントを削除</button>
+                    </div>
+                </div>
+
+                <div v-else class="empty-state">
+                    <p style="font-weight: 900; color: var(--text);">プレビューからイベントをクリックするか、新しく追加してください</p>
+                    <div class="add-buttons">
+                        <button class="btn btn-add" @click="addEvent('main')">＋ メインに追加</button>
+                        <button class="btn btn-add" style="background: var(--accent2);" @click="addEvent('hall')">＋ 稲稜ホールに追加</button>
+                        <button class="btn btn-add" style="background: #4caf77;" @click="addEvent('keion')">＋ 軽音に追加</button>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--text); font-weight: 900;">👀 プレビュー（クリックで編集）</h3>
+            <div class="timetable-wrapper preview-box">
+                <div class="tt-headers">
+                    <div class="tt-header time-col">TIME</div>
+                    <div class="tt-header">メイン</div>
+                    <div class="tt-header">稲稜</div>
+                    <div class="tt-header">軽音</div>
+                </div>
+                
+                <div class="tt-body" style="--total-mins: 420; --scale: 3px;">
+                    <div class="tt-open-line" :style="{ top: `calc(${openStartOffset} * var(--scale))` }">
+                        <span style="top: -16px;">{{ openTimeString }} 一般開場</span>
+                    </div>
+                    
+                    <div class="tt-time-axis">
+                        <div v-for="hour in [9,10,11,12,13,14,15,16]" :key="hour" class="tt-time-label" :style="{ top: `calc(${(hour-9)*60} * var(--scale))` }">
+                            {{ hour }}:00
+                        </div>
+                    </div>
+
+                    <div class="tt-col col-main">
+                        <div v-for="ev in getEventsForStage('main')" :key="ev.id"
+                             class="tt-item" 
+                             :class="{ 'is-editing': editingEvent && editingEvent.id === ev.id }"
+                             :style="calcStyle(ev)"
+                             @click="editEvent(ev)">
+                             <div class="tt-item-time">{{ ev.startTime }}-{{ ev.endTime }}</div>
+                             <div class="tt-item-title">{{ ev.title }}</div>
+                        </div>
+                    </div>
+
+                    <div class="tt-col col-hall">
+                        <div v-for="ev in getEventsForStage('hall')" :key="ev.id"
+                             class="tt-item" 
+                             :class="{ 'is-editing': editingEvent && editingEvent.id === ev.id }"
+                             :style="calcStyle(ev)"
+                             @click="editEvent(ev)">
+                             <div class="tt-item-time">{{ ev.startTime }}-{{ ev.endTime }}</div>
+                             <div class="tt-item-title">{{ ev.title }}</div>
+                        </div>
+                    </div>
+
+                    <div class="tt-col col-keion">
+                        <div v-for="ev in getEventsForStage('keion')" :key="ev.id"
+                             class="tt-item" 
+                             :class="{ 'is-editing': editingEvent && editingEvent.id === ev.id }"
+                             :style="calcStyle(ev)"
+                             @click="editEvent(ev)">
+                             <div class="tt-item-time">{{ ev.startTime }}-{{ ev.endTime }}</div>
+                             <div class="tt-item-title">{{ ev.title }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-generate" @click="generateCode">HTMLコードを生成する</button>
+
+            <div v-if="outputCode" class="code-output anim-fade-up is-animated">
+                <h3 style="color: #4caf77; margin-bottom: 10px;">✨ 生成完了！</h3>
+                <p>以下のコードをコピーして、<code>event.html</code> の <strong>{{ currentDay === 'day1' ? 'DAY 1' : 'DAY 2' }}</strong> の <code>&lt;div class="tt-body"&gt;...&lt;/div&gt;</code> をまるごと上書きしてください。</p>
+                <textarea readonly ref="textarea">{{ outputCode }}</textarea>
+                <button class="btn" style="background: white; color: #333;" @click="copyCode">コードをコピー</button>
+                <span v-if="copied" style="color: #4caf77; margin-left: 15px; font-weight: bold;">コピーしました！</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 完全新規でVueアプリを定義・マウント
+        const App = Vue.createApp({
+            data() {
+                return {
+                    currentDay: 'day1',
+                    events: [],
+                    editingId: null,
+                    nextId: 1,
+                    outputCode: '',
+                    copied: false
+                }
+            },
+            computed: {
+                // 現在編集中のイベントオブジェクトを取得
+                editingEvent() {
+                    return this.events.find(ev => ev.id === this.editingId);
+                },
+                // 開場時間の文字列
+                openTimeString() {
+                    return this.currentDay === 'day1' ? '9:45' : '9:30';
+                },
+                // 9:00を基準(0)とした開場時間のズレ(分)
+                openStartOffset() {
+                    return this.currentDay === 'day1' ? 45 : 30;
+                }
+            },
+            mounted() {
+                // サンプルデータを初期登録
+                this.insertSampleData();
+            },
+            methods: {
+                setDay(day) {
+                    this.currentDay = day;
+                    this.editingId = null; // タブ切り替え時は選択解除
+                    this.outputCode = '';
+                },
+                addEvent(stage) {
+                    const newEvent = {
+                        id: this.nextId++,
+                        day: this.currentDay,
+                        stage: stage,
+                        title: '新規イベント',
+                        startTime: '10:00',
+                        endTime: '10:30',
+                        desc: ''
+                    };
+                    this.events.push(newEvent);
+                    this.editingId = newEvent.id; // 追加したものをすぐ編集状態に
+                },
+                editEvent(ev) {
+                    this.editingId = ev.id;
+                },
+                cancelEdit() {
+                    this.editingId = null;
+                },
+                deleteEvent(id) {
+                    if(confirm('本当に削除しますか？')) {
+                        this.events = this.events.filter(ev => ev.id !== id);
+                        this.editingId = null;
+                    }
+                },
+                // プレビュー用に特定のステージのイベントを時間順に取得
+                getEventsForStage(stage) {
+                    return this.events
+                        .filter(ev => ev.day === this.currentDay && ev.stage === stage)
+                        .sort((a, b) => a.startTime.localeCompare(b.startTime));
+                },
+                // 時間の文字列 (例: "10:30") から、9:00を基準とした分数と長さを計算
+                calcStyle(ev) {
+                    const startArr = (ev.startTime || '09:00').split(':');
+                    const endArr = (ev.endTime || '09:00').split(':');
+                    
+                    const startMins = (parseInt(startArr[0]) * 60 + parseInt(startArr[1])) - (9 * 60);
+                    const endMins = (parseInt(endArr[0]) * 60 + parseInt(endArr[1])) - (9 * 60);
+                    const duration = endMins - startMins;
+
+                    return {
+                        '--start': startMins > 0 ? startMins : 0,
+                        '--duration': duration > 0 ? duration : 30
+                    };
+                },
+                // HTMLコード生成処理
+                generateCode() {
+                    const dayLabel = this.currentDay === 'day1' ? '11月1日（土）' : '11月2日（日）';
+                    const stages = ['main', 'hall', 'keion'];
+                    
+                    let html = `\n`;
+                    html += `<div class="tt-body" style="--total-mins: 420;">\n`;
+                    html += `    <div class="tt-open-line" style="top: calc(${this.openStartOffset} * var(--scale));"><span style="top: -16px;">${this.openTimeString} 一般開場</span></div>\n`;
+                    
+                    // 左側の時間軸 (9:00 - 16:00)
+                    html += `    <div class="tt-time-axis">\n`;
+                    for(let i=0; i<=7; i++){
+                        html += `        <div class="tt-time-label" style="top: calc(${i*60} * var(--scale))">${i+9}:00</div>\n`;
+                    }
+                    html += `    </div>\n\n`;
+
+                    // 各ステージの列
+                    stages.forEach(stageId => {
+                        let stageName = stageId === 'main' ? 'メインステージ' : (stageId === 'hall' ? '稲稜ホール' : '軽音ステージ');
+                        html += `    <div class="tt-col col-${stageId}">\n`;
+                        
+                        this.getEventsForStage(stageId).forEach(ev => {
+                            if(!ev.title) return; // 空ならスキップ
+                            
+                            const styleParams = this.calcStyle(ev);
+                            const safeStart = ev.startTime.replace(/^0/, ''); // 09:10 -> 9:10
+                            const safeEnd = ev.endTime.replace(/^0/, '');
+                            const timeStr = `${safeStart}-${safeEnd}`;
+                            
+                            // HTMLエスケープ
+                            const titleEsc = (ev.title || '').replace(/"/g, '&quot;');
+                            const descEsc = (ev.desc || '').replace(/"/g, '&quot;');
+                            
+                            html += `        <div class="tt-item" style="--start: ${styleParams['--start']}; --duration: ${styleParams['--duration']};" data-title="${titleEsc}" data-time="${timeStr}" data-stage="${stageName}" data-desc="${descEsc}">\n`;
+                            html += `            <div class="tt-item-time">${timeStr}</div>\n`;
+                            html += `            <div class="tt-item-title">${titleEsc}</div>\n`;
+                            html += `        </div>\n`;
+                        });
+                        html += `    </div>\n\n`;
+                    });
+
+                    html += `</div>\n`;
+                    html += ``;
+                    
+                    this.outputCode = html;
+                    this.copied = false;
+                },
+                copyCode() {
+                    const textarea = this.$refs.textarea;
+                    textarea.select();
+                    document.execCommand('copy');
+                    this.copied = true;
+                    setTimeout(() => { this.copied = false; }, 3000);
+                },
+                // 初期データ
+                insertSampleData() {
+                    const initialData = [
+                        { day: 'day1', stage: 'main', title: '開会式', start: '09:10', end: '09:45', desc: '※学院生のみ参加可。一般開場は9:45から。' },
+                        { day: 'day1', stage: 'main', title: '演劇部', start: '10:00', end: '10:10', desc: 'オープニングパフォーマンス' },
+                        { day: 'day1', stage: 'hall', title: '映画部', start: '10:05', end: '10:35', desc: 'オリジナルショートフィルム上映会' },
+                        { day: 'day1', stage: 'keion', title: '軽音楽部', start: '10:00', end: '12:10', desc: '軽音楽部所属バンドによるライブ' },
+                        { day: 'day2', stage: 'main', title: '有志③ ダンス', start: '10:00', end: '10:35', desc: 'ナツメグ, E.Y.S.M. ほか' },
+                        { day: 'day2', stage: 'hall', title: 'ブラスバンド部', start: '10:00', end: '10:20', desc: 'アンサンブル演奏' },
+                        { day: 'day2', stage: 'keion', title: '軽音楽部', start: '09:40', end: '14:30', desc: 'ロングランライブ！' }
+                    ];
+                    initialData.forEach(d => {
+                        this.events.push({
+                            id: this.nextId++,
+                            day: d.day,
+                            stage: d.stage,
+                            title: d.title,
+                            startTime: d.start,
+                            endTime: d.end,
+                            desc: d.desc
+                        });
+                    });
+                }
+            }
+        });
+
+        // ここが抜けていた・間違っていた部分です！正しくマウントさせます。
+        App.mount('#app');
+    </script>
+</body>
+</html>
