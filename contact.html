@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A / CONTACT - 第45回 稲稜祭</title>
+    <meta name="description" content="早稲田大学本庄高等学院「稲稜祭」のよくあるご質問（Q&A）と、お問い合わせ窓口に関するページです。">
+    <meta name="keywords" content="稲稜祭, Q&A, 質問, お問い合わせ, 早稲田大学本庄高等学院">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+
+    <!-- contact.html 専用の追加スタイル -->
+    <style>
+        .contact-top {
+            background-image: linear-gradient(135deg, rgba(247, 244, 235, 0.9), rgba(255, 255, 255, 0.4)), url('images/bg.png');
+        }
+
+        .contact-main {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* セクションタイトル */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.1em;
+            color: var(--text);
+        }
+
+        /* Q&A アコーディオン */
+        .qa-container {
+            margin-bottom: 60px;
+        }
+        .qa-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(23, 50, 79, 0.04);
+            overflow: hidden;
+        }
+        .qa-item summary {
+            display: flex;
+            align-items: center;
+            padding: 20px 24px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            cursor: pointer;
+            list-style: none; /* デフォルトのマーカーを消す */
+            transition: background 0.3s ease;
+        }
+        .qa-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .qa-item summary:hover {
+            background: rgba(247, 244, 235, 0.5);
+        }
+        .qa-item summary .q-mark {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-right: 12px;
+            font-weight: 900;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .qa-item summary .icon {
+            margin-left: auto;
+            transition: transform 0.3s ease;
+            color: var(--muted);
+        }
+        .qa-item[open] summary .icon {
+            transform: rotate(180deg);
+        }
+        .qa-item .answer-box {
+            padding: 0 24px 24px 48px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text);
+            font-weight: 700;
+            display: flex;
+            gap: 12px;
+        }
+        .qa-item .answer-box .a-mark {
+            color: var(--accent2);
+            font-size: 1.4rem;
+            font-weight: 900;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1;
+        }
+        .qa-item .answer-box p {
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        /* その他の注意事項 */
+        .notes-section {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            padding: 40px 30px;
+            border-radius: 12px;
+            margin-bottom: 80px;
+            box-shadow: 0 16px 40px rgba(23, 50, 79, 0.06);
+        }
+        .notes-section h2 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--text);
+            padding-bottom: 12px;
+            display: inline-block;
+        }
+        .notes-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .notes-list li {
+            position: relative;
+            padding-left: 1.8em;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .notes-list li::before {
+            content: '○';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 900;
+        }
+        .notes-sub {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--border);
+            font-weight: 700;
+        }
+
+        /* コンタクトエリア */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .contact-card {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 40px 24px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(23, 50, 79, 0.04);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 35px rgba(23, 50, 79, 0.08);
+        }
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .icon-insta {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        .icon-email {
+            background: var(--text);
+        }
+        .contact-card h3 {
+            font-size: 1.1rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+        .contact-card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-weight: 700;
+            flex-grow: 1;
+        }
+        .btn-contact {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--text);
+            background: rgba(247, 244, 235, 1);
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover .btn-contact {
+            background: var(--text);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .contact-main { padding: 30px 20px; }
+            .qa-item .answer-box { padding: 0 20px 20px 20px; flex-direction: column; gap: 4px; }
+            .notes-section { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <!-- ローディング -->
+    <div id="loading">
+        <span class="loading-ball">⚽</span>
+        <div class="loading-text">Now loading</div>
+        <div class="loading-percent" aria-live="polite">0%</div>
+        <div class="loading-bar-wrap">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-final">We have no limit...</div>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">稲稜祭 <span>'26</span></a>
+        </div>
+        <button class="hamburger" id="js-hamburger" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav" id="js-nav">
+            <ul>
+                <li><a href="index.html">TOP</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="event.html">EVENTS</a></li>
+                <li><a href="booth.html">BOOTHS</a></li>
+                <li><a href="access.html">ACCESS</a></li>
+                <li><a href="contact.html" class="is-current">Q&A / CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ヒーロー -->
+        <section class="top contact-top">
+            <div class="top-content">
+                <div class="top-theme"><span>QUESTIONS & CONTACT</span></div>
+                <h1 class="heading-hero js-split-text text-shadow-solid">Q&A / CONTACT</h1>
+                <p class="fs-desc js-split-text" style="margin: 0 auto;">よくあるご質問とお問い合わせ先について</p>
+            </div>
+        </section>
+
+        <div class="contact-main">
+
+            <h2 class="section-title anim-fade-up">Q&A</h2>
+            
+            <div class="qa-container anim-fade-up">
+                <!-- Q1 -->
+                <details class="qa-item">
+                    <summary>
+                        <span class="q-mark">Q</span>
+                        受付開始は何時ですか。
+                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </summary>
+                    <div class="answer-box">
+                        <span class="a-mark">A</span>
+                        <p>10/31 (土) 9:45、11/1 (日) 9:30の予定です。受付開始前のご来場はご遠慮ください。</p>
+                    </div>
+                </details>
+
+                <!-- Q2 -->
+                <details class="qa-item">
+                    <summary>
+                        <span class="q-mark">Q</span>
+                        受付終了は何時ですか。
+                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </summary>
+                    <div class="answer-box">
+                        <span class="a-mark">A</span>
+                        <p>10/31(土) 14:30、11/1 (日) 14:00の予定です。受付終了後の入場はできません。</p>
+                    </div>
+                </details>
+
+                <!-- Q3 -->
+                <details class="qa-item">
+                    <summary>
+                        <span class="q-mark">Q</span>
+                        本庄駅南口、寄居駅北口からのスクールバスは無料で乗車できますか。
+                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </summary>
+                    <div class="answer-box">
+                        <span class="a-mark">A</span>
+                        <p>稲稜祭当日に限り、どなたでも無料でご乗車いただけます。ぜひご利用ください。<br>【バスのご案内】 <a href="access.html" style="color:var(--accent); text-decoration:underline;">ACCESSページ</a>にてバスダイヤをご確認いただけます。</p>
+                    </div>
+                </details>
+
+                <!-- Q4 -->
+                <details class="qa-item">
+                    <summary>
+                        <span class="q-mark">Q</span>
+                        自家用車で来場できますか。
+                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </summary>
+                    <div class="answer-box">
+                        <span class="a-mark">A</span>
+                        <p>来場者用の駐車場はありますが、校舎から遠く離れた場所の案内になります。場合によっては校舎まで高低差のあるルートを15分以上歩いていただきます。また、台数に限りがあるため満車時は本庄早稲田駅周辺の有料駐車場をご利用いただきます。<br>大変不便をおかけしますので、できる限り公共交通機関でのご来場をお願いいたします。</p>
+                    </div>
+                </details>
+
+                <!-- Q5 -->
+                <details class="qa-item">
+                    <summary>
+                        <span class="q-mark">Q</span>
+                        自転車・バイクで来場できますか。
+                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </summary>
+                    <div class="answer-box">
+                        <span class="a-mark">A</span>
+                        <p>可能です。来場者用の駐輪スペースは、陸上競技場前の空地です。</p>
+                    </div>
+                </details>
+
+                <!-- Q6 -->
+                <details class="qa-item">
+                    <summary>
+                        <span class="q-mark">Q</span>
+                        ベビーカーの持ち込みは可能ですか。
+                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </summary>
+                    <div class="answer-box">
+                        <span class="a-mark">A</span>
+                        <p>可能です。ただし、校舎内におむつ交換台を備えたトイレや授乳スペースの用意がないため、乳児をお連れの場合はあらかじめご承知おきください(本庄早稲田駅改札内にベビー休憩室があります)。<br>また、校舎内にベビーカー置き場の用意はございません(お預かりできません)のでご了承ください。</p>
+                    </div>
+                </details>
+
+                <!-- Q7 -->
+                <details class="qa-item">
+                    <summary>
+                        <span class="q-mark">Q</span>
+                        車いすでの来場は可能ですか。
+                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </summary>
+                    <div class="answer-box">
+                        <span class="a-mark">A</span>
+                        <p>可能です。校舎内の移動にはエレベーターをご利用いただけます。また、車いすの方がご利用いただける多目的トイレを設置しています。</p>
+                    </div>
+                </details>
+
+                <!-- Q8 -->
+                <details class="qa-item">
+                    <summary>
+                        <span class="q-mark">Q</span>
+                        食事ができる場所はありますか。
+                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </summary>
+                    <div class="answer-box">
+                        <span class="a-mark">A</span>
+                        <p>両日とも生協売店および生協食堂が営業しており、一般の方もご利用いただけます。<br>売店は開催期間中の営業となり、食堂の営業時間は10:30~14:00(予定)です。食事メニューを販売しておりますが、数に限りがありますので売り切れの際はご容赦ください (売り切れ次第営業終了となります)。</p>
+                    </div>
+                </details>
+
+                <!-- Q9 -->
+                <details class="qa-item">
+                    <summary>
+                        <span class="q-mark">Q</span>
+                        自動販売機はありますか。
+                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </summary>
+                    <div class="answer-box">
+                        <span class="a-mark">A</span>
+                        <p>キャンパス内に飲料の自動販売機がございます。</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- その他の注意事項 -->
+            <section class="notes-section anim-fade-up">
+                <h2>その他の注意事項</h2>
+                <ul class="notes-list">
+                    <li>学院生の写真・動画を撮る場合は、必ず被写体となる本人の同意を得てください。無断撮影は固くお断りいたします。撮影をされている方には、教職員がお声がけをさせていただくことがありますのでご了承ください。</li>
+                    <li>茶道部・應援部 (チアリーダー)の生徒の撮影は、特別に許可された関係者を除き全面禁止としております。</li>
+                    <li>酒気を帯びた方のご入場、キャンパス内での飲酒はご遠慮ください。</li>
+                    <li>キャンパス内は全面禁煙です (電子タバコも含む)。一般の方にご利用いただける喫煙所は設けておりません。</li>
+                    <li>雨天時、メインステージ公演を体育館アリーナに移行する場合があります。体育館は土足禁止ですので、2階入口に用意してある袋に靴を入れ、お持ちになって入場してください。</li>
+                    <li>食事は食堂あるいは食販クラス・団体が提供する場所、もしくは校舎前に設置してあるベンチ等にてお願いいたします。稲稜ホール内でのご飲食はご遠慮ください。</li>
+                </ul>
+                <div class="notes-sub">
+                    * 2026年9月1日時点の情報に基づき掲示しています。追加・更新される場合がありますので、ご来場前に本学院Webサイトで最新の情報をご確認ください。
+                </div>
+            </section>
+
+            <h2 class="section-title anim-fade-up">CONTACT</h2>
+            
+            <div class="contact-grid anim-fade-up" style="transition-delay: 0.1s;">
+                
+                <!-- 公式Instagram -->
+                <div class="contact-card">
+                    <div class="contact-icon icon-insta">
+                        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </div>
+                    <h3>公式Instagram</h3>
+                    <p>稲稜祭に関する一般的なご質問などは、公式InstagramのDMまでお気軽にお問い合わせください。</p>
+                    <a href="https://www.instagram.com/toryosai2026/" target="_blank" rel="noopener" class="btn-contact">
+                        DMで問い合わせる
+                    </a>
+                </div>
+
+                <!-- HP制作者Instagram -->
+                <div class="contact-card">
+                    <div class="contact-icon icon-insta">
+                        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </div>
+                    <h3>HP制作者Instagram</h3>
+                    <p>Webサイトの不具合や、当サイトに関する技術的なお問い合わせはこちらまでお願いいたします。</p>
+                    <a href="https://www.instagram.com/daichi_08713/" target="_blank" rel="noopener" class="btn-contact">
+                        DMで問い合わせる
+                    </a>
+                </div>
+
+                <!-- メール -->
+                <div class="contact-card">
+                    <div class="contact-icon icon-email">
+                        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <h3>メールでのお問い合わせ</h3>
+                    <p>学校へのお問い合わせは指定のメールアドレスまでお願いいたします。</p>
+                    <a href="mailto:honjosh@list.waseda.jp" class="btn-contact">
+                        honjosh@list.waseda.jp
+                    </a>
+                </div>
+
+            </div>
+
+        </div><!-- /contact-main -->
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 稲稜祭実行委員会HP担当 井上太智(3年)</p>
+    </footer>
+</body>
+</html>
